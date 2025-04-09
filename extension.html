@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Checker</title>
+  <link rel="stylesheet" href="extension.css">
+  
+</head>
+<body>
+  <h1>Password Strength Checker</h1>
+  
+  <div class="input-container">
+    <input type="password" id="password-input" placeholder="Type your password">
+    <button class="toggle-password" id="toggle-password">👁️</button>
+  </div>
+  
+  <div class="strength-meter">
+    <div class="strength-progress" id="strength-progress"></div>
+  </div>
+  
+  <ul class="criteria-list">
+    <li class="criteria-item" id="length-criteria">
+      <span class="icon neutral">⬤</span>
+      At least 8 characters long
+    </li>
+    <li class="criteria-item" id="uppercase-criteria">
+      <span class="icon neutral">⬤</span>
+      Contains uppercase letter
+    </li>
+    <li class="criteria-item" id="lowercase-criteria">
+      <span class="icon neutral">⬤</span>
+      Contains lowercase letter
+    </li>
+    <li class="criteria-item" id="number-criteria">
+      <span class="icon neutral">⬤</span>
+      Contains number
+    </li>
+    <li class="criteria-item" id="special-criteria">
+      <span class="icon neutral">⬤</span>
+      Contains special character
+    </li>
+    <li class="criteria-item" id="common-criteria">
+      <span class="icon neutral">⬤</span>
+      Not a common password
+    </li>
+  </ul>
+  
+  <div class="footer">
+    All checking is done locally, your password is never sent anywhere.
+  </div>
+
+  <script src="extension.js"></script>
+</body>
+</html>
