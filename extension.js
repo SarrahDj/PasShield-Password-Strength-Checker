@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load zxcvbn for entropy 
     const zxcvbnScript = document.createElement('script');
     zxcvbnScript.src = 'https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js';
-    document.head.appendChild(zxcvbnScript);
     
     // Common sequences and patterns to check 
     const commonSequences = [
