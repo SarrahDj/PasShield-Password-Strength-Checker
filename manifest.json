@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Password Strength Checker",
+    "version": "1.0",
+    "description": "Checks the strength of passwords as users type them",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "icons/password_cursor_icon_16.png",
+        "48": "icons/password_cursor_icon_48.png",
+        "128": "icons/password_cursor_icon_128.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "permissions": ["activeTab"],
+    "web_accessible_resources": [
+      {
+        "resources": ["index.html", "extension.css", "extension.js"],
+        "matches": ["<all_urls>"]
+      }
+    ]
+  }

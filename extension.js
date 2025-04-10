@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const passwordInput = document.getElementById('password-input');
-    const togglePassword = document.getElementById('toggle-password');
     const strengthProgress = document.getElementById('strength-progress');
     const lengthCriteria = document.getElementById('length-criteria');
     const uppercaseCriteria = document.getElementById('uppercase-criteria');
@@ -82,33 +80,25 @@ document.addEventListener('DOMContentLoaded', function() {
     let typingTimer;
     let checkingPwned = false;
     let pwnedCache = {};
+    let currentPassword = '';
     
-    togglePassword.addEventListener('click', function() {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            togglePassword.textContent = '🔒';
-        } else {
-            passwordInput.type = 'password';
-            togglePassword.textContent = '👁️';
-        }
-    });
-    
-    passwordInput.addEventListener('input', function() {
+    function processPassword(password) {
+        currentPassword = password;
         clearTimeout(typingTimer);
-        checkPasswordStrength(passwordInput.value);
+        checkPasswordStrength(password);
         
         // Set timer to check for final validation after user stops typing
         typingTimer = setTimeout(function() {
-            markFailedCriteria(passwordInput.value);
+            markFailedCriteria(password);
             
             // Only check HIBP API if password is at least 5 chars long
-            if (passwordInput.value.length >= 5) {
-                checkHaveIBeenPwned(passwordInput.value);
+            if (password.length >= 5) {
+                checkHaveIBeenPwned(password);
             } else {
                 checkCriteria(pwnedCriteria, false, '✓', '⬤', false);
             }
         }, 800);
-    });
+    }
     
     function checkPasswordStrength(password) {
         // Reset all to neutral if password is empty
@@ -405,5 +395,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const statusMessage = document.getElementById('status-message');
         statusMessage.style.display = 'none';
     }
- 
+    
+    // Listen for messages from content script
+    window.addEventListener('message', function(event) {
+        if (event.data && event.data.type === 'CHECK_PASSWORD') {
+            processPassword(event.data.password);
+        }
+    });
+    
+    // Notify parent when loaded
+    window.parent.postMessage({type: 'CHECKER_READY'}, '*');
 });

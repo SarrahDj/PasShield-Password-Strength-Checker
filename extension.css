@@ -13,37 +13,6 @@ h1 {
     text-align: center;
 }
 
-.input-container {
-    position: relative;
-    margin-bottom: 12px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-input:focus {
-    outline: none;
-    border-color: #0078d7;
-    box-shadow: 0 0 0 2px rgba(0, 120, 215, 0.2);
-}
-
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #666;
-}
-
 .criteria-list {
     list-style-type: none;
     padding: 0;
