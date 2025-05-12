@@ -6,27 +6,28 @@
     "action": {
       "default_popup": "index.html",
       "default_icon": {
-        "16": "icons/password_cursor_icon_16.png",
-        "48": "icons/password_cursor_icon_48.png",
-        "128": "icons/password_cursor_icon_128.png"
+        "16": "icons/passhield_logo_16.png",
+        "48": "icons/passhield_logo_48.png",
+        "128": "icons/passhield_logo_128.png"
       }
     },
     "icons": {
-      "16": "icons/password_cursor_icon_16.png",
-      "48": "icons/password_cursor_icon_48.png",
-      "128": "icons/password_cursor_icon_128.png"
+      "16": "icons/passhield_logo_16.png",
+      "48": "icons/passhield_logo_48.png",
+      "128": "icons/passhield_logo_128.png"
     },
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
         "js": ["content.js", "zxcvbn.js"],
         "run_at": "document_end"
+        
       }
     ],
-    "permissions": ["activeTab"],
+    "permissions": ["activeTab", "scripting"],
     "web_accessible_resources": [
       {
-        "resources": ["index.html", "extension.css", "extension.js"],
+        "resources": ["index.html", "extension.css", "extension.js", "zxcvbn.js"],
         "matches": ["<all_urls>"]
       }
     ]
